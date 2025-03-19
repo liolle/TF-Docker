@@ -1,0 +1,35 @@
+body {
+  height: 100vh;
+  overflow: hidden; 
+  color: green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+main {
+  height: fit-content;
+  width: 400px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+section {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.desk {
+  width: 100px;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+
