@@ -27,4 +27,23 @@ public class ProductController(IProductService produts) : ControllerBase {
     return Ok(produts.GetAll());
   }
 
+  [HttpDelete]
+  [Route("/product/delete")]
+  public IActionResult Delete([FromQuery] string id){
+    produts.Remove(id);
+    return  Ok();
+  }
+
+  [HttpPatch]
+  [Route("/product/update")]
+  public IActionResult Update([FromBody] Product p){
+
+    if (!ModelState.IsValid){
+      return BadRequest("Invalid model");
+    }
+
+    produts.Update(p);
+    return  Ok();
+  }
+
 }
