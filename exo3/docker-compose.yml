@@ -1,0 +1,9 @@
+services:
+  webapp: 
+    image: webapp:v1
+    build: 
+      context: .
+      args:
+        REBUILD_STAGE_2 : "${REBUILD_STAGE_2}"
+    ports: 
+      - 80:80
