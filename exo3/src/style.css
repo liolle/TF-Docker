@@ -32,9 +32,10 @@ section {
   padding: 5px;
   font-style: italic;
   font-weight: bold;
+  user-select: none;
 }
 
-.desk::hover {
+.desk:hover {
   background-color: green;
   color: azure;
 }
