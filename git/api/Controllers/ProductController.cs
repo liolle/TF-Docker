@@ -7,7 +7,7 @@ public class ProductController(IProductService produts) : ControllerBase {
 
   [HttpPost]
   [Route("/product/add")]
-  public IActionResult Add([FromBody] Product p)
+  public IActionResult Add([FromBody] ProductModel p)
   {
     if (!ModelState.IsValid){
       return BadRequest("Invalid model");
@@ -29,7 +29,7 @@ public class ProductController(IProductService produts) : ControllerBase {
 
   [HttpDelete]
   [Route("/product/delete")]
-  public IActionResult Delete([FromQuery] string id){
+  public IActionResult Delete([FromQuery] int id){
     produts.Remove(id);
     return  Ok();
   }

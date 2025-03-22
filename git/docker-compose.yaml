@@ -1,0 +1,21 @@
+name: exo4
+services:
+  db:
+    build:
+      context: ./db
+    container_name: webdb
+    env_file: 
+      - mssql.env
+    volumes:
+      - ./data:/var/opt/mssql 
+
+  api:
+    build:
+      context: ./api
+      args:
+        INVALIDATE_CACHE: "${INVALIDATE_CACHE}"
+    container_name: webapi
+    env_file: 
+      - mssql.env
+    ports:
+      - 5128:8080

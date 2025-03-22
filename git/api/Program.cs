@@ -1,4 +1,5 @@
 using api.services;
+using DotNetEnv;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,7 +7,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSingleton<IProductService,ProductService>();
+// Add Env &  Json configuration
+Env.Load();
+builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+builder.Configuration.AddEnvironmentVariables();
+builder.Services.AddSingleton<IConfiguration>(builder.Configuration);
+
+builder.Services.AddSingleton<IDataContext,DataContext>();
+builder.Services.AddScoped<IProductService,ProductService>();
 
 var app = builder.Build();
 
