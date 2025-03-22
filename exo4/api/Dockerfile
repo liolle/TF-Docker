@@ -1,6 +1,6 @@
 # SDK containing the CLI
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS sdk
-# Image optimized for running ASP.NET Core apps 
+# Image optimized to run ASP.NET Core apps 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS aspnet
 
 FROM sdk AS build
