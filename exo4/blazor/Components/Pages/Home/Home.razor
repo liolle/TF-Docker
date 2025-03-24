@@ -1,0 +1,13 @@
+﻿@page "/"
+@using blazor.models
+@rendermode InteractiveServer
+
+<PageTitle>Home</PageTitle>
+<div class="page-main">
+    @foreach(Product p in products){
+        <div class="product-card">
+            <div>@p.name</div>
+            <div>@p.price</div>
+        </div>
+    }
+</div>

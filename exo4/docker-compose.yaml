@@ -19,3 +19,14 @@ services:
       - mssql.env
     ports:
       - 5128:8080
+
+  blazor:
+    build:
+      context: ./blazor
+      args:
+        INVALIDATE_CACHE: "${INVALIDATE_CACHE}"
+    container_name: webfront
+    env_file: 
+      - mssql.env
+    ports:
+      - 3500:8080
