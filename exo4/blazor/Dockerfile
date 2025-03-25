@@ -13,5 +13,4 @@ FROM aspnet AS final
 ARG INVALIDATE_CACHE
 WORKDIR /app
 COPY --from=build ./app .
-EXPOSE 5128
 ENTRYPOINT ["dotnet", "blazor.dll"]

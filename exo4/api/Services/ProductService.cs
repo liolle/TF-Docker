@@ -107,8 +107,33 @@ public partial class ProductService
 
   public bool Update(Product p)
   {
-    return true;
+    try
+    {
+      using SqlConnection conn = context.CreateConnection();
+      string query = $@"
+        UPDATE [Products]
+        SET name = @name, price = @price
+        WHERE [id] = @id
+      ";
+
+      using SqlCommand cmd = new(query, conn);
+      cmd.Parameters.AddWithValue("@id", p.Id);
+      cmd.Parameters.AddWithValue("@name", p.name);
+      cmd.Parameters.AddWithValue("@price", p.price);
+      conn.Open();
+      int result = cmd.ExecuteNonQuery();
+      if (result < 1)
+      {
+        return false; 
+      }
+      return true;
+    }
+    catch (Exception)
+    {
+      return false; 
+    }
   }
+
 }
 
 public class Product {

@@ -8,6 +8,8 @@ services:
       - mssql.env
     volumes:
       - ./data:/var/opt/mssql 
+    networks:
+        - exo4net
 
   api:
     build:
@@ -19,6 +21,8 @@ services:
       - mssql.env
     ports:
       - 5128:8080
+    networks:
+        - exo4net
 
   blazor:
     build:
@@ -30,3 +34,9 @@ services:
       - mssql.env
     ports:
       - 3500:8080
+    networks:
+        - exo4net
+
+networks:
+  exo4net:
+

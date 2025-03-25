@@ -12,6 +12,7 @@ public partial class Home: ComponentBase
 
   protected override async Task OnInitializedAsync()
   {
+    
     if (_client is null){return;}
       products = await _client.GetFromJsonAsync<List<Product>>("product/all") ?? [];
 
