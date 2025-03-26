@@ -9,7 +9,7 @@ services:
     volumes:
       - ./data:/var/opt/mssql 
     networks:
-        - exo4net
+        - back
 
   api:
     build:
@@ -22,7 +22,8 @@ services:
     ports:
       - 5128:8080
     networks:
-        - exo4net
+        - back
+        - middle
 
   blazor:
     build:
@@ -35,8 +36,12 @@ services:
     ports:
       - 3500:8080
     networks:
-        - exo4net
+        - front 
+        - middle
 
 networks:
-  exo4net:
-
+  middle:
+    internal: true
+  back: 
+    internal: true
+  front: 
